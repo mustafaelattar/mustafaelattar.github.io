@@ -1,7 +1,7 @@
 # Dr. Mustafa Elattar
 # 📚 Academic & Professional
 
-![Profile Photo](https://via.placeholder.com/150)
+![Profile Photo]([https://via.placeholder.com/150](https://www.google.com/url?sa=i&url=https%3A%2F%2Feg.linkedin.com%2Fin%2Fmustafa-elattar-phd-42289112&psig=AOvVaw32If-sq6HlLkFki-feyS8O&ust=1747290708937000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLiziqKroo0DFQAAAAAdAAAAABAE))
 
 ## 🎓 Educational Qualifications
 | Degree       | Major                                                                 | Institution & Year                         |
