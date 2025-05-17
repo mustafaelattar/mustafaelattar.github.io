@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Experience - Mustafa Elattar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #FAFAFA;
+      font-family: 'Lato', sans-serif;
+      color: #333;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #2C3E50;
+    }
+    .experience-card {
+      display: flex;
+      gap: 16px;
+      background: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.08);
+      margin-bottom: 16px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: inherit;
+    }
+    .experience-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .experience-card img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      border-radius: 6px;
+      margin-top: 4px;
+    }
+    .experience-info {
+      flex-grow: 1;
+    }
+    .experience-info h2 {
+      margin: 0;
+      font-size: 18px;
+      color: #1C1C1E;
+    }
+    .experience-info h3 {
+      margin: 2px 0 6px;
+      font-size: 14px;
+      color: #666;
+    }
+    .experience-info p {
+      margin: 0;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .icon {
+      font-size: 18px;
+      margin-right: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .experience-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .experience-card img {
+        margin: 0 0 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Professional Experience</h1>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/ramyro.jpg" alt="Ramyro logo">
+      <div class="experience-info">
+        <h2><span class="icon">🧠</span>CTO & VP @ Ramyro Inc.</h2>
+        <h3>2024 - Present</h3>
+        <p>Leading AI platform strategy, clinical validation, integration into PACS systems, and hospital deployment of decision-support technologies.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/intixel.png" alt="Intixel logo">
+      <div class="experience-info">
+        <h2><span class="icon">🚀</span>CoFounder @ Intixel Inc.</h2>
+        <h3>2018 - Present</h3>
+        <p>Developed pioneering AI solutions in breast and lung imaging, scaling from lab prototypes to hospital-ready SaaS platforms.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/nu.png" alt="Nile University logo">
+      <div class="experience-info">
+        <h2><span class="icon">🎓</span>Director of AI Program @ Nile University</h2>
+        <h3>2020 - Present</h3>
+        <p>Designed and led the undergraduate AI program to merge core research with practical industry needs in Egypt and beyond.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/nu.png" alt="Nile University logo">
+      <div class="experience-info">
+        <h2><span class="icon">📘</span>Associate Professor @ Nile University</h2>
+        <h3>2023 - Present</h3>
+        <p>Teaching deep learning and computer vision, guiding theses in medical imaging and working on government-funded AI projects.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/nu.png" alt="MIIP logo">
+      <div class="experience-info">
+        <h2><span class="icon">🧬</span>Group Head @ MIIP Lab</h2>
+        <h3>2017 - Present</h3>
+        <p>Leading a multidisciplinary lab working on diagnostic imaging, image-guided interventions, and clinical AI applications.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/nu.png" alt="Nile University logo">
+      <div class="experience-info">
+        <h2><span class="icon">📚</span>Assistant Professor @ Nile University</h2>
+        <h3>2017 - 2023</h3>
+        <p>Built foundational AI courses and supervised early research efforts that became the basis of Intixel’s early work.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/msi.png" alt="Myocardial Solutions logo">
+      <div class="experience-info">
+        <h2><span class="icon">❤️</span>Head of R&D @ Myocardial Solutions</h2>
+        <h3>2017 - 2018</h3>
+        <p>Directed development of cardiac strain analysis tools for MRI and participated in U.S.-based clinical trials and validation.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/nki.png" alt="Netherlands Cancer Institute logo">
+      <div class="experience-info">
+        <h2><span class="icon">🔬</span>Postdoctoral Fellow @ Netherlands Cancer Institute</h2>
+        <h3>2016 - 2017</h3>
+        <p>Focused on improving treatment planning through quantitative imaging and collaborated with radiologists and physicists.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/3mensio.png" alt="3mensio logo">
+      <div class="experience-info">
+        <h2><span class="icon">🛠️</span>Intern Developer @ 3mensio</h2>
+        <h3>2016</h3>
+        <p>Worked on the development of a miniAVR planning workflow in alignment with my PhD research on image-based preoperative planning for TAVI interventions.</p>
+      </div>
+    </a>
+    
+    <a class="experience-card" href="#">
+      <img src="imgs/aumc.png" alt="University of Amsterdam logo">
+      <div class="experience-info">
+        <h2><span class="icon">🎓</span>PhD Researcher @ University of Amsterdam</h2>
+        <h3>2012 - 2016</h3>
+        <p>Developed AI-driven quantitative tools for TAVI planning, combining CT segmentation and hemodynamic modeling.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/Diagnosoft.png" alt="Diagnosoft logo">
+      <div class="experience-info">
+        <h2><span class="icon">💡</span>Senior R&D Engineer @ Diagnosoft</h2>
+        <h3>2010 - 2012</h3>
+        <p>Created tools for cardiac MRI post-processing and supported clinical studies in U.S. and Middle East hospitals.</p>
+      </div>
+    </a>
+
+    <a class="experience-card" href="#">
+      <img src="imgs/nu.png" alt="Nile University logo">
+      <div class="experience-info">
+        <h2><span class="icon">🔍</span>Research Assistant @ MIIP Lab, Nile University</h2>
+        <h3>2008 - 2010</h3>
+        <p>Worked on segmentation and registration algorithms, launching my journey into medical imaging research.</p>
+      </div>
+    </a>
+  </div>
+</body>
+</html>
