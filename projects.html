@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flipping Cards Grid</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0d1623;
+      color: #fff;
+      font-family: 'Lato';
+      margin: 0;
+      padding: 40px;
+    }
+    h1 {
+      font-family: 'Lato';
+      color: #006ecf;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      perspective: 1000px;
+      cursor: pointer;
+      height: 300px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 300px;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card-front {
+      background-color: #1f2235;
+      flex-direction: column;
+      position: relative;
+    }
+    .card-front img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .card-front h3 {
+      z-index: 1;
+      color: white;
+      font-size: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+    .card-back {
+      background-color: #006ecf;
+      color: white;
+      transform: rotateY(180deg);
+      padding: 0% 0%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+    .card-back h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .card-back p {
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+    .card-back a {
+      background-color: white;
+      color: #006ecf;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .card-back a:hover {
+      background-color: #3F77FF;
+      color: white;
+    }
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 0 10px;
+      }
+      .card {
+        height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Projects</h1>
+  <div class="grid">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="imgs/cxr-clear.png" alt="Project 1">
+          <h3>Smart Agricultural Clinic (SAC)</h3>
+        </div>
+        <div class="card-back">
+          <h3>Smart Agricultural Clinic (SAC)</h3>
+          <p>The overall objectives of the project can be summarized as follows: (1) Develop a practical lung cancer detection system that resolves the issue related to the detection of the small and medium-sized tumors in Chest x-ray. (2) Identify the stratification features that define small, medium, and large size cancer from CT. (3) Perform screening and detection of different size cancer areas from CXR standalone.</p>
+          <a href="https://example.com/project1" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://miro.medium.com/v2/resize:fit:850/1*0Y1L0zpAU733GCJQ8QOf1g.png" alt="Project 2">
+          <h3>Personalized Diet Plans</h3>
+        </div>
+        <div class="card-back">
+          <h3>Personalized Diet Plans</h3>
+          <p>AI-generated nutrition plans tailored to health conditions, goals, and region-specific diets.</p>
+          <a href="https://example.com/project2" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs10878-023-00988-w/MediaObjects/10878_2023_988_Fig2_HTML.png" alt="Project 3">
+          <h3>Stroke Triage Support</h3>
+        </div>
+        <div class="card-back">
+          <h3>Stroke Triage Support</h3>
+          <p>A clinical decision support tool for emergency room triage of stroke patients using imaging.</p>
+          <a href="https://example.com/project3" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Cards for Scroll Testing -->
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://via.placeholder.com/300x300?text=Project+4" alt="Project 4">
+          <h3>Diabetic Retinopathy</h3>
+        </div>
+        <div class="card-back">
+          <h3>Diabetic Retinopathy</h3>
+          <p>Early detection using AI for ophthalmology clinics in underserved regions.</p>
+          <a href="https://example.com/project4" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://via.placeholder.com/300x300?text=Project+5" alt="Project 5">
+          <h3>Ovarian Cancer Detection</h3>
+        </div>
+        <div class="card-back">
+          <h3>Ovarian Cancer Detection</h3>
+          <p>Using ultrasound-only cost-effective AI screening methods for early diagnosis.</p>
+          <a href="https://example.com/project5" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="https://via.placeholder.com/300x300?text=Project+6" alt="Project 6">
+          <h3>BabyGuard AI</h3>
+        </div>
+        <div class="card-back">
+          <h3>BabyGuard AI</h3>
+          <p>Monitoring maternal and infant health through mobile AI applications.</p>
+          <a href="https://example.com/project6" target="_blank">View Project</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
