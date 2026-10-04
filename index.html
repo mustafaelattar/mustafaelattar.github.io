@@ -1,272 +1,609 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hero Section - Mustafa Elattar</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <style>
-    body {
-      margin: 0;
-      background-color: #0d1623;
-      font-family: 'Lato', sans-serif;
-      color: #ffffff;
-    }
-    .menu-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    .menu-toggle div {
-      width: 25px;
-      height: 3px;
-      background: #fff;
-      margin: 5px 0;
-      transition: all 0.3s ease;
-    }
-    .menu-toggle.open div:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    .menu-toggle.open div:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.open div:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-     .nav-menu {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      background: #1f2235;
-      border-radius: 8px;
-      padding: 10px 0;
-      z-index: 1000;
-    }
-    .nav-menu.show {
-      display: flex;
-    }
-    .nav-menu a {
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      display: block;
-    }
-    .nav-menu a:hover {
-      background: #3F77FF;
-    }
-    .hero {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 40px 20px;
-      box-sizing: border-box;
-      gap: 40px;
-      position: relative;
-    }
-    .hero-img {
-      background-color: #006ecf;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 16px;
-    }
-    .hero-img img {
-      width: 300px;
-      height: 300px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-    .hero-text {
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      max-width: 600px;
-    }
-    .greeting {
-      background-color: #006ecf;
-      display: inline-block;
-      color: white;
-      font-size: 12px;
-      font-weight: bold;
-      padding: 4px 10px;
-      border-radius: 6px 6px 6px 0;
-      margin-bottom: 20px;
-      width: fit-content;
-      position: relative;
-    }
-    .greeting::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 6px;
-      width: 0;
-      height: 0;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 6px solid #3F77FF;
-    }
-    .hero-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      font-weight: bold;
-      margin: 0;
-    }
-    .hero-text h1 span {
-      color: #006ecf;
-    }
-    .typed-title {
-      font-size: 18px;
-      margin: 8px 0 16px;
-      color: #ffffff;
-      font-weight: 600;
-      letter-spacing: 1px;
-    }
-    .description {
-      font-size: 16px;
-      color: #D0D0D0;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-    .portfolio-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background-color: #006ecf;
-      color: white;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 14px;
-      width: fit-content;
-    }
-    .portfolio-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: white;
-    }
-    @media (max-width: 768px) {
-    .hero {
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-    }
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mustafa Elattar, PhD</title>
+<meta name="description" content="Mustafa Elattar, PhD — AI and medical-imaging researcher, Associate Professor at Nile University, and co-founder and CTO of RAMYRO.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long reading-room page — a radiology-viewer frame around the portrait, then stacked sections on a 12-col grid, DICOM-tag style labels as the recurring device. */
+:root{
+  --bg:#f3f6f8; --surface:#ffffff; --ink:#0f1b25; --muted:#526472; --line:#d6dee4;
+  --accent:#0a6a86; --accent-soft:#e1eff4; --annot:#b97a1c; --viewer:#0b1218; --viewer-ink:#cfe3ec; --logo-filter:none;
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --body:"Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --max:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0c141a; --surface:#121e27; --ink:#e4edf2; --muted:#93a6b3; --line:#22323e;
+  --accent:#5fc2dd; --accent-soft:#16303b; --annot:#e6aa4c; --viewer:#05090c; --viewer-ink:#cfe3ec; --logo-filter:invert(1); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c141a; --surface:#121e27; --ink:#e4edf2; --muted:#93a6b3; --line:#22323e;
+  --accent:#5fc2dd; --accent-soft:#16303b; --annot:#e6aa4c; --viewer:#05090c; --viewer-ink:#cfe3ec; --logo-filter:invert(1); color-scheme:dark}
 
-    .hero-img img {
-      width: 220px;
-      height: 220px;
-    }
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.02em;line-height:1.08;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(16px,4vw,32px)}
 
-    .hero-text {
-      padding: 20px;
-      align-items: center;
-    }
+/* DICOM-tag style label */
+.tag{font:500 .72rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:.6em;align-items:baseline}
+.tag b{font-weight:500;color:var(--annot)}
 
-    .hero-text h1 {
-      font-size: 28px;
-    }
+/* Nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:24px;height:58px}
+.brand{font:700 1rem var(--display);color:var(--ink);text-decoration:none;white-space:nowrap}
+.navlinks{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;min-width:0;margin-left:auto}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;white-space:nowrap}
+.navlinks a:hover{color:var(--ink)}
 
-    .typed-title {
-      font-size: 16px;
-    }
+/* Hero */
+.hero{padding-block:clamp(40px,7vw,88px) clamp(40px,6vw,72px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(2.6rem,6.2vw,4.9rem);margin-block:18px 22px}
+.hero h1 span{color:var(--accent)}
+.lead{font-size:clamp(1.08rem,1.6vw,1.25rem);color:var(--muted);max-width:56ch}
+.roles{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chip{font:500 .8rem var(--body);padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:8px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--surface)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
 
-    .description {
-      font-size: 14px;
-    }
+/* Viewer frame around portrait */
+.viewer{margin:0;position:relative;background:var(--viewer);border-radius:14px;padding:14px;color:var(--viewer-ink);font:400 .68rem/1.45 var(--mono);letter-spacing:.04em;max-width:420px;justify-self:end;width:100%}
+.viewer img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:4px;filter:none}
+.viewer .ov{position:absolute;pointer-events:none}
+.ov.tl{top:24px;left:24px}.ov.tr{top:24px;right:24px;text-align:right}
+.ov.bl{bottom:24px;left:24px}.ov.br{bottom:24px;right:24px;text-align:right}
+.ov{text-shadow:0 1px 2px #000;z-index:2}
+.viewer:before,.viewer:after{content:"";position:absolute;left:14px;right:14px;height:22%;z-index:1;pointer-events:none}
+.viewer:before{top:14px;border-radius:4px 4px 0 0;background:linear-gradient(rgba(5,9,12,.72),transparent)}
+.viewer:after{bottom:14px;border-radius:0 0 4px 4px;background:linear-gradient(transparent,rgba(5,9,12,.72))}
+.ov .y{color:#f0b24f}
+.cross{position:absolute;inset:14px;pointer-events:none}
+.cross:before,.cross:after{content:"";position:absolute;background:rgba(240,178,79,.55)}
+.cross:before{left:50%;top:calc(50% - 9px);width:1px;height:18px}
+.cross:after{top:50%;left:calc(50% - 9px);height:1px;width:18px}
 
-    .portfolio-btn {
-      justify-content: center;
-      font-size: 13px;
-    }
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--line)}
+.stat{padding:22px 18px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0}
+.stat strong{display:block;font:700 clamp(1.6rem,3vw,2.2rem)/1 var(--display);font-variant-numeric:tabular-nums}
+.stat span{display:block;color:var(--muted);font-size:.86rem;margin-top:8px}
 
-    .menu-toggle {
-      top: 16px;
-      right: 16px;
-    }
+/* Sections */
+section.s{padding-block:clamp(56px,8vw,96px)}
+section.s + section.s{border-top:1px solid var(--line)}
+.shead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px 48px;align-items:end;margin-bottom:clamp(28px,4vw,44px)}
+.shead h2{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-top:12px}
+.shead p{color:var(--muted);max-width:60ch}
 
-    .nav-menu {
-      top: 56px;
-      right: 16px;
-      width: 200px;
-    }
-  }
+/* Now */
+.now{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card h3{font-size:1.35rem}
+.card .role{font-weight:600;font-size:.95rem}
+.card p{color:var(--muted);font-size:.96rem}
+.card p.tag{font-size:.72rem}
+.card .when{margin-top:auto;padding-top:8px}
+.boards{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;color:var(--muted);font-size:.95rem}
 
-  </style>
-</head>
-<body>
-  <button class="menu-toggle" onclick="toggleMenu(this)">
-    <div></div>
-    <div></div>
-    <div></div>
-  </button>
-  <nav class="nav-menu" id="navMenu">
-    <a href="about.html">About</a>
-    <a href="projects.html">Projects</a>
-    <a href="publications.html">Publications</a>
-    <a href="teaching.html">Teaching</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+/* Timeline */
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl:before{content:"";position:absolute;left:96px;top:6px;bottom:6px;width:1px;background:var(--line)}
+.tl li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:0 28px;padding-block:14px;position:relative}
+.tl li:after{content:"";position:absolute;left:92px;top:22px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.tl li.ind:after{border-color:var(--annot)}
+.tl .yr{font:500 .85rem var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
+.tl .ev{padding-left:22px;min-width:0}
+.tl .ev h3{font-size:1.08rem;font-family:var(--body);font-weight:600;letter-spacing:0}
+.tl .ev p{color:var(--muted);font-size:.95rem;margin-top:3px;max-width:68ch}
+.legend{display:flex;gap:20px;margin-bottom:12px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:9px;height:9px;border-radius:50%;border:2px solid var(--accent)}
+.legend i.ind{border-color:var(--annot)}
 
-  <section class="hero">
-    <div class="hero-img">
-      <img src="https://media.licdn.com/dms/image/v2/D4D03AQGgix-SQxgJMQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721158330267?e=1752710400&v=beta&t=ipAwVAZSrtlGWMHDSvD7gnir9jOeCfng2aBkYF-6-R8" alt="Mustafa Elattar">
+/* Work */
+.work{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.work .card{padding:0;overflow:hidden}
+.work .card .body{padding:26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.work img{display:block;width:100%;aspect-ratio:16/7;object-fit:cover}
+.work .ph{aspect-ratio:16/7;background:var(--viewer);color:var(--viewer-ink);display:grid;place-items:center;font:500 .8rem var(--mono);letter-spacing:.08em}
+.work .ph .stack{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;padding:16px}
+.work .ph .stack span{border:1px solid rgba(207,227,236,.35);padding:6px 10px;border-radius:4px}
+.facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;font-size:.92rem;margin-top:4px}
+.facts dt{color:var(--muted);font:500 .74rem/1.9 var(--mono);text-transform:uppercase;letter-spacing:.06em}
+.facts dd{margin:0}
+
+/* Research */
+.themes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.theme{background:var(--surface);padding:26px;min-width:0}
+.theme h3{font-size:1.2rem;margin-block:10px 8px}
+.theme p{color:var(--muted);font-size:.96rem}
+.pubs{margin-top:44px}
+.pubs h3{font-size:1.25rem;margin-bottom:6px}
+.publist{list-style:none;margin:0;padding:0}
+.publist li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;padding-block:14px;border-bottom:1px solid var(--line)}
+.publist .y{font:500 .85rem var(--mono);color:var(--muted);padding-top:2px}
+.publist .t{font-weight:600}
+.publist .v{color:var(--muted);font-size:.92rem}
+.profiles{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+
+/* Projects table */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:.94rem}
+th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 .72rem var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);background:var(--bg)}
+tbody tr:last-child td{border-bottom:0}
+td.y{font-family:var(--mono);font-size:.85rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+td .name{font-weight:600}
+td .area{display:inline-block;margin-top:4px;font:500 .7rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.badge{display:inline-block;font:500 .7rem var(--mono);letter-spacing:.05em;padding:3px 8px;border-radius:4px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.note{color:var(--muted);font-size:.88rem;margin-top:14px}
+
+/* Speaking */
+.speak{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px);align-items:start}
+.speak figure{margin:0}
+.speak figure img{display:block;width:100%;border-radius:12px}
+.speak figcaption{font-size:.85rem;color:var(--muted);margin-top:10px}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding-block:14px;border-bottom:1px solid var(--line)}
+.list li:first-child{padding-top:0}
+.list .t{font-weight:600}
+.list .m{color:var(--muted);font-size:.92rem}
+.topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.service{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 40px}
+.service li{padding-block:8px;border-bottom:1px solid var(--line);color:var(--ink);font-size:.95rem}
+.service span{color:var(--muted)}
+
+/* Recognition */
+.awards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.award{border-top:2px solid var(--ink);padding-top:14px}
+.award .y{font:500 .8rem var(--mono);color:var(--annot)}
+.award h3{font-family:var(--body);font-weight:600;letter-spacing:0;font-size:1.02rem;margin-block:6px 4px}
+.award p{color:var(--muted);font-size:.9rem}
+
+/* Contact */
+.contact{background:var(--viewer);color:var(--viewer-ink);border-radius:16px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,48px)}
+.contact h2{font-size:clamp(1.9rem,3.6vw,2.8rem);color:#fff}
+.contact .tag{color:#8ea6b3}
+.contact p{color:#a9bfca;margin-top:14px;max-width:52ch}
+.intents{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.intents li{border:1px solid rgba(207,227,236,.18);border-radius:10px;padding:14px 16px}
+.intents b{display:block;color:#fff;font-weight:600}
+.intents span{font-size:.9rem;color:#a9bfca}
+.email{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:24px}
+.email code{font:500 1rem var(--mono);color:#fff;background:rgba(255,255,255,.08);padding:10px 14px;border-radius:8px;user-select:all;overflow-wrap:anywhere}
+.copy{font:600 .9rem var(--body);padding:10px 16px;border-radius:8px;border:1px solid rgba(207,227,236,.35);background:transparent;color:#fff;cursor:pointer}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px}
+.links a{color:#7fd3ea}
+
+/* Logo strip */
+.logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px 36px;padding-block:26px;border-bottom:1px solid var(--line)}
+.logos .tag{flex-basis:100%}
+.logos img{height:30px;width:auto;opacity:.72;filter:var(--logo-filter)}
+.logos img.tall{height:42px}
+.logos img.wide{height:24px}
+
+/* Talk gallery */
+.gallery{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px;margin-bottom:36px}
+.gallery figure{margin:0;min-width:0}
+.gallery img{display:block;width:100%;height:260px;max-height:260px;object-fit:cover;border-radius:10px}
+.gallery figcaption{font-size:.84rem;color:var(--muted);margin-top:8px}
+.talks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
+.talks li{padding-block:14px;border-bottom:1px solid var(--line)}
+.talks .t{font-weight:600}
+.talks .m{color:var(--muted);font-size:.92rem}
+.subh{font:600 1.15rem var(--display);margin-block:40px 8px}
+.list.talks li:first-child{padding-top:14px}
+.list.service li:first-child{padding-top:8px}
+
+/* Press */
+.press{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.press a.item{display:flex;flex-direction:column;gap:10px;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);text-decoration:none;min-width:0}
+.press a.item:hover{border-color:var(--accent)}
+.press .outlet{font:700 1.05rem var(--display);letter-spacing:-.01em;color:var(--accent)}
+.press .hl{font-weight:600;line-height:1.35}
+.press .meta{margin-top:auto;padding-top:6px}
+.press .kind{font:500 .7rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--annot)}
+.contacts{display:grid;gap:10px;margin-top:22px}
+.contacts .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.contacts .lbl{font:500 .72rem var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#8ea6b3;width:110px}
+.contacts code{font:500 .95rem var(--mono);color:#fff;background:rgba(255,255,255,.08);padding:8px 12px;border-radius:8px;user-select:all;overflow-wrap:anywhere}
+.copy.sm{padding:7px 12px;font-size:.82rem}
+@media (max-width:880px){.press,.talks{grid-template-columns:minmax(0,1fr)}.gallery{grid-template-columns:1fr 1fr}.gallery figure:first-child{grid-column:1/-1}}
+footer{padding-block:36px 48px;color:var(--muted);font-size:.86rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+@media (max-width:880px){
+  .hero .wrap,.shead,.speak,.contact{grid-template-columns:minmax(0,1fr)}
+  .viewer{justify-self:start;max-width:360px}
+  .now,.awards{grid-template-columns:minmax(0,1fr)}
+  .work,.themes,.service{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:nth-child(3){border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .nav .brand{display:none}
+  .navlinks{margin-left:0}
+  .tl:before{left:58px}
+  .tl li{grid-template-columns:58px minmax(0,1fr);gap:0 14px}
+  .tl li:after{left:54px}
+  .tl .ev{padding-left:14px}
+  .publist li{grid-template-columns:minmax(0,1fr);gap:2px}
+}
+</style>
+
+</head><body>
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top">Mustafa Elattar</a>
+    <div class="navlinks">
+      <a href="#now">Now</a><a href="#path">Path</a><a href="#work">Work</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#speaking">Talks</a><a href="#press">Press</a><a href="#contact">Contact</a>
     </div>
-    <div class="hero-text">
-      <div class="greeting">HELLO</div>
-      <h1>I'M <span>MUSTAFA ELATTAR</span></h1>
-      <div class="typed-title">I AM AN <span id="typed-text"></span></div>
-      <div class="description">
-        I’m a researcher, professor, and entrepreneur working at the intersection of Artificial Intelligence and Healthcare. 
-        I specialize in developing AI-powered solutions for medical imaging, clinical decision support, and personalized health technologies.        
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <p class="tag"><b>(0010,0010)</b> Mustafa Elattar, PhD · Cairo, Egypt</p>
+      <h1>Medical-imaging AI that leaves the lab and <span>works in hospitals.</span></h1>
+      <p class="lead">I'm an AI and medical-imaging researcher, an academic leader at Nile University, and co-founder and CTO of RAMYRO. Since 2008 I have moved between research groups and companies, building image-analysis tools that clinicians can trust and use.</p>
+      <div class="roles">
+        <span class="chip">Co-Founder &amp; CTO, RAMYRO</span>
+        <span class="chip">Associate Professor, Nile University</span>
+        <span class="chip">Director, AI Undergraduate Program</span>
+        <span class="chip">Co-Founder, Intixel</span>
       </div>
-      <div class="description">
-        On this site, you’ll find my projects, publications, and the latest tools I’m building to transform healthcare through intelligent systems.        
+      <div class="cta">
+        <a class="btn primary" href="#work">See the work</a>
+        <a class="btn" href="#contact">Get in touch</a>
       </div>
+    </div>
+    <figure class="viewer" aria-label="Portrait of Mustafa Elattar">
+      <img src="img/portrait.jpg" alt="Black-and-white portrait of Mustafa Elattar in a dark jacket and white shirt" width="800" height="800">
+      <div class="cross" aria-hidden="true"></div>
+      <div class="ov tl" aria-hidden="true">ELATTAR^MUSTAFA<br>PhD · UvA 2016</div>
+      <div class="ov tr" aria-hidden="true">NILE UNIVERSITY<br>RAMYRO</div>
+      <div class="ov bl" aria-hidden="true"><span class="y">AI · CT · MR · X-RAY</span></div>
+      <div class="ov br" aria-hidden="true">CAIRO, EG<br>SE 2008–2026</div>
+    </figure>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="stats" role="list">
+    <div class="stat" role="listitem"><strong>80+</strong><span>peer-reviewed publications</span></div>
+    <div class="stat" role="listitem"><strong>9</strong><span>funded research projects led or co-led, 2018–2022</span></div>
+    <div class="stat" role="listitem"><strong>18 yrs</strong><span>in medical image analysis, research and industry</span></div>
+    <div class="stat" role="listitem"><strong>14</strong><span>businesses served by Intixel across 6 countries</span></div>
+  </div>
+  <div class="logos" aria-label="Institutions and companies">
+    <p class="tag">Where I've worked and built</p>
+    <img src="img/logos/nu.webp" alt="Nile University" width="179" height="48">
+    <img src="img/logos/ramyro.webp" alt="RAMYRO" width="212" height="43" class="wide">
+    <img src="img/logos/intixel.webp" alt="Intixel" width="288" height="49" class="wide">
+    <img src="img/logos/uva.webp" alt="University of Amsterdam" width="471" height="52" class="wide">
+    <img src="img/logos/nki.webp" alt="Netherlands Cancer Institute" width="123" height="64" class="tall">
+    <img src="img/logos/miccai.webp" alt="MICCAI Society" width="85" height="72" class="tall">
+  </div>
+</div>
+
+<main>
+<section class="s" id="now">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="tag"><b>(0008,0080)</b> Institution</p><h2>What I'm doing now</h2></div>
+      <p>Two roles carry most of my time: building a clinical AI platform at RAMYRO and running the AI program and imaging research group at Nile University. Each one keeps the other honest.</p>
+    </div>
+    <div class="now">
+      <article class="card">
+        <p class="tag">Venture · Delaware, USA</p>
+        <h3>RAMYRO</h3>
+        <p class="role">Co-Founder, CTO &amp; VP</p>
+        <p>Leading the technical vision for ramOS, a platform that brings PACS, vendor-neutral archiving, AI orchestration and clinical workflow into one system, with CE- and FDA-cleared AI applications running inside the radiologist's workflow.</p>
+        <p class="tag when">2024 – present</p>
+      </article>
+      <article class="card">
+        <p class="tag">Academia · Cairo</p>
+        <h3>Nile University</h3>
+        <p class="role">Associate Professor &amp; AI Program Director</p>
+        <p>Directing the undergraduate Artificial Intelligence program, including ABET-aligned curriculum and quality work, and heading the Medical Imaging and Image Processing (MIIP) Research Group.</p>
+        <p class="tag when">Faculty since 2017 · Director since 2020</p>
+      </article>
+      <article class="card">
+        <p class="tag">Venture · Cairo</p>
+        <h3>Intixel</h3>
+        <p class="role">Co-Founder · CEO 2018–2026</p>
+        <p>Built from a radiology-AI startup into a broader AI and software company. In 2026 I handed over the CEO role after eight years, and I stay involved as co-founder.</p>
+        <p class="tag when">2018 – present</p>
+      </article>
+    </div>
+    <div class="boards">
+      <span class="tag">Boards</span>
+      <span>Non-Executive Board Member, DigiTAAM (Austria–UAE), since 2022</span>
+      <span>Non-Executive Board Member, HINT CXM (UAE), since 2023</span>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="path">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="tag"><b>(0008,0020)</b> Study date</p><h2>The path so far</h2></div>
+      <p>Research and industry have run side by side since my master's. Each industry role put research methods in front of clinicians, and each research chapter came back with harder questions.</p>
+    </div>
+    <div class="legend tag"><span><i></i>Research &amp; academia</span><span><i class="ind"></i>Industry</span></div>
+    <ol class="tl">
+      <li><span class="yr">2003–08</span><div class="ev"><h3>BSc, Systems &amp; Biomedical Engineering, Cairo University</h3><p>Graduation project: a retinal image-analysis toolkit with network support for remote screening. Fourth place in the national Made in Egypt competition, and a Microsoft Imagine Cup finalist in 2007.</p></div></li>
+      <li><span class="yr">2008–10</span><div class="ev"><h3>MSc, Nile University: segmentation of cardiac MRI</h3><p>Research assistant in the MIIP lab, working on cardiac and retinal image analysis.</p></div></li>
+      <li class="ind"><span class="yr">2010–12</span><div class="ev"><h3>Senior R&amp;D Engineer, Diagnosoft, North Carolina</h3><p>Built cardiac MR segmentation algorithms for clinical analysis software and supported its integration into hospital PACS. My first step from research code into a shipped clinical product.</p></div></li>
+      <li><span class="yr">2012–16</span><div class="ev"><h3>PhD, University of Amsterdam / Academic Medical Center</h3><p><em>Quantitative Image Analysis for Planning of Aortic Valve Replacement.</em> Automated aortic-root segmentation, landmark detection and CTA measurements for TAVI planning.</p></div></li>
+      <li><span class="yr">2016–17</span><div class="ev"><h3>Postdoctoral Fellow, Netherlands Cancer Institute</h3><p>Image-guided oncology: quantitative imaging biomarkers for radiotherapy planning and outcome prediction.</p></div></li>
+      <li><span class="yr">2017</span><div class="ev"><h3>Assistant Professor, Nile University; founded the MIIP Research Group</h3><p>Back in Cairo as faculty, building a research group in medical imaging, computer vision and diagnostic AI.</p></div></li>
+      <li class="ind"><span class="yr">2017–18</span><div class="ev"><h3>Head of R&amp;D, Myocardial Solutions, North Carolina</h3><p>Led development of quantitative cardiac MR post-processing tools for myocardial strain analysis.</p></div></li>
+      <li class="ind"><span class="yr">2018</span><div class="ev"><h3>Co-founded Intixel</h3><p>AI for radiology in Egyptian and African hospitals, including the AIRA product line for breast, chest and coronary imaging.</p></div></li>
+      <li><span class="yr">2020</span><div class="ev"><h3>Director, AI Undergraduate Program, Nile University</h3><p>Curriculum design, ABET alignment and project-based learning for one of Egypt's early AI degree programs.</p></div></li>
+      <li class="ind"><span class="yr">2021</span><div class="ev"><h3>Intixel graduates from the Flat6Labs Cairo seed program</h3></div></li>
+      <li><span class="yr">2022</span><div class="ev"><h3>IVLP Impact Award; AFRICAI at ICLR</h3><p>U.S. Department of State Impact Award for an AI hackathon at Nile University, and co-authorship of the paper introducing AFRICAI, the African network for AI in biomedical imaging.</p></div></li>
+      <li><span class="yr">2023</span><div class="ev"><h3>Associate Professor, Nile University</h3></div></li>
+      <li class="ind"><span class="yr">2024</span><div class="ev"><h3>Co-founded RAMYRO as CTO and VP</h3><p>Building ramOS, the integration layer for clinical AI in radiology.</p></div></li>
+      <li class="ind"><span class="yr">2026</span><div class="ev"><h3>Handed over the Intixel CEO role</h3><p>After eight years, 14 businesses served across six countries and a radiology-AI spin-off.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="s" id="work">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="tag"><b>(0018,1030)</b> Protocol</p><h2>Companies I've built</h2></div>
+      <p>Both companies start from the same observation: radiology AI usually fails at the point of integration, where the model meets the hospital's systems, the radiologist's worklist and the local patient population.</p>
+    </div>
+    <div class="work">
+      <article class="card">
+        <div class="ph" aria-hidden="true"><div class="stack"><span>PACS</span><span>VNA</span><span>AI ORCHESTRATION</span><span>WORKLIST</span><span>REPORTING</span><span>DICOM · HL7-FHIR</span></div></div>
+        <div class="body">
+          <p class="tag">2024 – present</p>
+          <h3>RAMYRO and ramOS</h3>
+          <p>ramOS assembles the parts a radiology department already needs (image archive, vendor-neutral storage, worklists, reporting) and adds an orchestration layer that routes each study to the right AI model and returns results inside the reading workflow. Every AI output carries its provenance and confidence, and the radiologist makes the call.</p>
+          <dl class="facts">
+            <dt>Role</dt><dd>Co-Founder, CTO &amp; VP</dd>
+            <dt>Focus</dt><dd>Interoperability, AI orchestration, deployment, regulatory readiness</dd>
+            <dt>Site</dt><dd><a href="https://www.ramyro.com" target="_blank" rel="noopener">ramyro.com</a></dd>
+          </dl>
+        </div>
+      </article>
+      <article class="card">
+        <img src="img/intixel-feature.jpg" alt="Villgro Africa feature artwork on Intixel showing Mustafa Elattar and Dr. Thanaa Mohannad" width="1200" height="675" loading="lazy">
+        <div class="body">
+          <p class="tag">2018 – 2026 as CEO</p>
+          <h3>Intixel and AIRA</h3>
+          <p>Intixel began with AI-assisted reading of breast, chest and coronary imaging (AIRABreast, AIRAChest, AIRACoronary), tested with clinical partners in Egypt. It grew into a wider AI and software company serving 14 businesses in six countries, and its radiology work was spun out as a dedicated company.</p>
+          <dl class="facts">
+            <dt>Role</dt><dd>Co-Founder; CEO 2018–2026</dd>
+            <dt>Milestone</dt><dd>Flat6Labs Cairo seed program, 2021</dd>
+            <dt>Press</dt><dd><a href="https://villgroafrica.org/ai-innovator-spotlight-intixel/" target="_blank" rel="noopener">Villgro Africa: AI Innovator Spotlight</a></dd>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="research">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="tag"><b>(0040,A730)</b> Content sequence</p><h2>Research</h2></div>
+      <p>My group works where a method has to hold up outside its benchmark: on a different scanner, a different hospital, a population the training data never saw. More than 80 peer-reviewed papers so far.</p>
+    </div>
+    <div class="themes">
+      <div class="theme"><p class="tag">Theme 1</p><h3>Cardiac imaging and procedure planning</h3><p>Automated segmentation, landmark detection and measurement from CT, CTA and MRI, from the TAVI planning tools of my PhD to cardiac MRI segmentation challenges.</p></div>
+      <div class="theme"><p class="tag">Theme 2</p><h3>Cancer imaging and diagnostic support</h3><p>Lung nodules on chest X-ray, breast density and mass segmentation in mammography, skin lesions and histopathology.</p></div>
+      <div class="theme"><p class="tag">Theme 3</p><h3>Generalisable and trustworthy AI</h3><p>Out-of-distribution robustness, zero-shot models for rare diseases, uncertainty and explainability. Contributor to the FUTURE-AI international consensus guideline.</p></div>
+      <div class="theme"><p class="tag">Theme 4</p><h3>AI for low-resource health systems</h3><p>Testing whether models hold up in African clinical settings, and building the AFRICAI network so more of that work happens on the continent.</p></div>
+    </div>
+
+    <div class="pubs">
+      <h3>Selected publications</h3>
+      <ol class="publist">
+        <li><span class="y">2025</span><div><p class="t">FUTURE-AI: international consensus guideline for trustworthy and deployable artificial intelligence in healthcare</p><p class="v">Lekadir, Frangi, Porras, Glocker, Cintas, Langlotz, Elattar, et al. · <em>BMJ</em> · <span class="cites">60 citations</span> · <a href="https://www.bmj.com/content/388/bmj-2024-081554" target="_blank" rel="noopener">Read</a></p></div></li>
+        <li><span class="y">2021</span><div><p class="t">Multi-centre, multi-vendor and multi-disease cardiac segmentation: the M&amp;Ms challenge</p><p class="v">Campello, Gkontra, …, Elattar, et al. · <em>IEEE Transactions on Medical Imaging</em> 40(12) · <span class="cites">436 citations</span></p></div></li>
+        <li><span class="y">2014</span><div><p class="t">A collaborative resource to build consensus for automated left ventricular segmentation of cardiac MR images</p><p class="v">Suinesiaputra, Cowan, Al-Agamy, Elattar, et al. · <em>Medical Image Analysis</em> 18(1) · <span class="cites">223 citations</span></p></div></li>
+        <li><span class="y">2018</span><div><p class="t">Deep ensemble learning for skin lesion classification from dermoscopic images</p><p class="v">Shahin, Kamal, Elattar · <em>CIBEC 2018</em> · <span class="cites">131 citations</span></p></div></li>
+        <li><span class="y">2016</span><div><p class="t">Automatic aortic root landmark detection in CTA images for preprocedural planning of TAVI</p><p class="v">Elattar, Wiegerinck, van Kesteren, et al. · <em>International Journal of Cardiovascular Imaging</em> 32 · <span class="cites">53 citations</span></p></div></li>
+        <li><span class="y">2014</span><div><p class="t">Automatic segmentation of the aortic root in CT angiography of candidate patients for TAVI</p><p class="v">Elattar, Wiegerinck, Planken, et al. · <em>Medical &amp; Biological Engineering &amp; Computing</em> 52 · <span class="cites">47 citations</span></p></div></li>
+        <li><span class="y">2023</span><div><p class="t">Generalisability of fetal ultrasound deep learning models to low-resource imaging settings in five African countries</p><p class="v">Sendra-Balcells, Campello, …, Elattar, et al. · <em>Scientific Reports</em> 13 · <span class="cites">31 citations</span></p></div></li>
+        <li><span class="y">2022</span><div><p class="t">Automatic early diagnosis of Alzheimer's disease using 3D deep ensemble approach</p><p class="v">Gamal, Elattar, Selim · <em>IEEE Access</em> 10 · <span class="cites">37 citations</span></p></div></li>
+        <li><span class="y">2025</span><div><p class="t">Modular post-hoc enhancements for zero-shot histopathology classification using vision-language models</p><p class="v">Noman, Henedak, Elattar · <em>Machine Learning: Science and Technology</em> 6(3)</p></div></li>
+        <li><span class="y">2022</span><div><p class="t">From MICCAI to AFRICAI: African network for artificial intelligence in biomedical imaging</p><p class="v">Lekadir, …, Elattar, et al. · <em>PML4DC Workshop, ICLR 2022</em> · <a href="https://iclr.cc/virtual/2022/7816" target="_blank" rel="noopener">Read</a></p></div></li>
+      </ol>
+      <p class="note">Citation counts from Google Scholar, 2025.</p>
+      <div class="profiles">
+        <a class="btn" href="https://scholar.google.com/citations?user=BJoskL8AAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a class="btn" href="https://orcid.org/0000-0001-7936-3522" target="_blank" rel="noopener">ORCID</a>
+        <a class="btn" href="https://www.researchgate.net/profile/Mustafa-Elattar" target="_blank" rel="noopener">ResearchGate</a>
+        <a class="btn" href="https://dblp.dagstuhl.de/pid/273/8045.html" target="_blank" rel="noopener">DBLP</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="projects">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="tag"><b>(0020,000D)</b> Study instance</p><h2>Funded projects</h2></div>
+      <p>Most of the work is healthcare, but the same tools of detection, early warning and decision support have gone into agriculture and road safety too.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Year</th><th>Project</th><th>Role</th><th>Funder</th></tr></thead>
+        <tbody>
+          <tr><td class="y">2024–</td><td><span class="name">AI-Enabled Agricultural Intelligence Hub</span><br><span class="area">Agriculture</span></td><td><span class="badge">Co-PI</span></td><td>Spanish International Cooperation, Excellence Center Program</td></tr>
+          <tr><td class="y">2022</td><td><span class="name">NU Artificial Intelligence Hackathon</span><br><span class="area">Education</span></td><td><span class="badge">PI</span></td><td>U.S. Department of State, IVLP Impact Awards</td></tr>
+          <tr><td class="y">2021</td><td><span class="name">CXRClear: lung-cancer detection in chest X-ray with 3D CT radiomics</span><br><span class="area">Healthcare</span></td><td><span class="badge">PI</span></td><td>ITIDA–ITAC</td></tr>
+          <tr><td class="y">2021</td><td><span class="name">Noninvasive imaging biomarkers for inflammation in hepatitis</span><br><span class="area">Healthcare</span></td><td><span class="badge">Co-PI</span></td><td>STDF–USA</td></tr>
+          <tr><td class="y">2020</td><td><span class="name">Smart Agricultural Clinic: AI advisory and early crop-disease detection</span><br><span class="area">Agriculture</span></td><td><span class="badge">PI</span></td><td>Academy of Scientific Research and Technology</td></tr>
+          <tr><td class="y">2020</td><td><span class="name">AI-based cloud computing for autonomous traffic management</span><br><span class="area">Mobility</span></td><td><span class="badge">Co-PI</span></td><td>Nile University</td></tr>
+          <tr><td class="y">2020</td><td><span class="name">Driver-distraction avoidance with an augmented-reality head-up display</span><br><span class="area">Mobility</span></td><td><span class="badge">PI</span></td><td>Nile University</td></tr>
+          <tr><td class="y">2019</td><td><span class="name">Attention mechanisms for lung abnormalities in chest X-ray</span><br><span class="area">Healthcare</span></td><td><span class="badge">PI</span></td><td>Nile University</td></tr>
+          <tr><td class="y">2018</td><td><span class="name">Deep-learning planning framework for minimally invasive aortic-valve replacement</span><br><span class="area">Healthcare</span></td><td><span class="badge">PI</span></td><td>Nile University</td></tr>
+          <tr><td class="y">2018</td><td><span class="name">Skin-cancer detection on edge-computing devices</span><br><span class="area">Healthcare</span></td><td><span class="badge">PI</span></td><td>Nile University</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="speaking">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="tag"><b>(0032,1060)</b> Requested procedure</p><h2>Talks and service</h2></div>
+      <p>I talk about what it takes to move medical AI from a paper into a hospital, and about building AI capacity in Egypt and across Africa.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="img/daad-workshop.jpg" alt="Group photo of participants at the DAAD COSIMENA workshop Bridging Research to Revenue" width="868" height="547" loading="lazy"><figcaption>DAAD/COSIMENA workshop "Bridging Research to Revenue". Photo: DAAD Egypt.</figcaption></figure>
+      <figure><img src="img/talk-lectern.jpg" alt="Mustafa Elattar speaking at a lectern in a dark suit" width="900" height="1018" loading="lazy" style="object-position:50% 20%"><figcaption>At the lectern.</figcaption></figure>
+      <figure><img src="img/talk-conference.jpg" alt="Mustafa Elattar smiling at a conference, wearing a lanyard" width="468" height="468" loading="lazy"><figcaption>At a conference.</figcaption></figure>
+    </div>
+    <h3 class="subh">Invited talks</h3>
+    <ul class="list talks">
+      <li><p class="t">Applied Artificial Intelligence in Medical Imaging and Drug Discovery</p><p class="m">School of Pharmacy, Kasr Alainy, Cairo University</p></li>
+      <li><p class="t">Smart Agricultural Clinic: A Transformative Technology-Based Solution to Agriculture Extension Problems in Egypt</p><p class="m">Academy of Scientific Research and Technology</p></li>
+      <li><p class="t">Deep Learning for Breast Cancer Management: Screening, Diagnosis and Treatment Planning</p><p class="m">IndabaX conference</p></li>
+      <li><p class="t">Radiomics using Deep Convolutional Neural Networks: Breast Cancer as a Use Case</p><p class="m">Arab Informatics Conference in Oncology (AICO)</p></li>
+      <li><p class="t">Artificial Intelligence in Radiology</p><p class="m">Novel Intelligent and Leading Emerging Sciences Conference (NILES)</p></li>
+      <li><p class="t">Commercialization of Machine-Learning-Powered Critical Healthcare Solutions</p><p class="m">Newton-Mosharafa research commercialization training</p></li>
+      <li><p class="t">Trustworthy AI: Policies for AI Development and Deployment in Healthcare</p><p class="m">DAAD/COSIMENA workshop "Bridging Research to Revenue"</p></li>
+      <li><p class="t">Technology Commercialization: An Introduction and a Glance at the MENA Landscape</p><p class="m">Arab-German Young Academy (AGYA) graduate training, September 2021</p></li>
+      <li><p class="t">Conference speaker</p><p class="m">Africa Health ExCon, Cairo, June 2023</p></li>
+      <li><p class="t">Mentor</p><p class="m">AFRICAI/MICCAI Summer School 2023</p></li>
+    </ul>
+    <div class="topics">
+      <span class="chip">Clinical AI deployment</span>
+      <span class="chip">Trustworthy AI in healthcare</span>
+      <span class="chip">Research to product</span>
+      <span class="chip">AI education in Africa &amp; MENA</span>
+    </div>
+    <h3 class="subh">Service to the field</h3>
+    <ul class="list service">
+      <li>Sponsorship Chair <span>· MICCAI 2024, Marrakech</span></li>
+      <li>Part of the winning bid <span>· to host MICCAI 2024 in Africa (2020)</span></li>
+      <li>Postdoc &amp; Student Activities Chair <span>· IEEE ISBI 2022</span></li>
+      <li>Founding member <span>· AFRICAI network</span></li>
+      <li>Organizing committee <span>· MICCAI FAIR 2021 workshop, IndabaX Egypt 2020</span></li>
+      <li>Curriculum and laboratory committees <span>· Higher Council of Universities, Egypt</span></li>
+      <li>Technical Committee for ICT <span>· Academy of Scientific Research and Technology</span></li>
+      <li>Reviewer <span>· NeurIPS, MICCAI, ISBI, AAAI, ICIP, IEEE JBHI, Computers in Biology and Medicine</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="s" id="recognition">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="tag"><b>(0008,1030)</b> Study description</p><h2>Recognition</h2></div>
+      <p>Awards for research, startups and leadership, from student competitions to international programs.</p>
+    </div>
+    <div class="awards">
+      <div class="award"><p class="y">2022</p><h3>IVLP Impact Award</h3><p>U.S. Department of State</p></div>
+      <div class="award"><p class="y">2020</p><h3>Winning bid to host MICCAI</h3><p>Part of the team that brought MICCAI 2024 to Marrakech</p></div>
+      <div class="award"><p class="y">2019</p><h3>Best Pitch and Best Health-Tech Startup</h3><p>Takeoff Istanbul International Startup Summit</p></div>
+      <div class="award"><p class="y">2019</p><h3>Top 5 Startups</h3><p>Young Business Hub Entrepreneurship Investment Summit, Bahrain</p></div>
+      <div class="award"><p class="y">2019</p><h3>Fareed Bader Award</h3><p>World Entrepreneurs and Investments Forum</p></div>
+      <div class="award"><p class="y">2019</p><h3>Top 10 Startups, 2WiN Mentoring Program</h3><p>German Chamber of Commerce</p></div>
+      <div class="award"><p class="y">2019</p><h3>Best poster</h3><p>Novel Intelligent and Leading Emerging Sciences Conference (NILES)</p></div>
+      <div class="award"><p class="y">2013</p><h3>Young Investigator finalist</h3><p>MEDICON 2013</p></div>
+      <div class="award"><p class="y">2011</p><h3>Third place, LV segmentation challenge</h3><p>STACOM 2011, with MICCAI</p></div>
+      <div class="award"><p class="y">2010</p><h3>Best poster</h3><p>Image Analysis and Recognition Conference (ICIAR)</p></div>
+      <div class="award"><p class="y">2008</p><h3>Full master's scholarship</h3><p>Nile University</p></div>
+      <div class="award"><p class="y">2007</p><h3>Microsoft Imagine Cup finalist</h3><p>and 4th place, Made in Egypt competition</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="press">
+  <div class="wrap">
+    <div class="shead">
+      <div><p class="tag"><b>(0008,103E)</b> Series description</p><h2>In the press</h2></div>
+      <p>Profiles, interviews and coverage of my work and of the companies I built.</p>
+    </div>
+    <div class="press">
+      <a class="item" href="https://www.wearetech.africa/en/fils-uk/tech-stars/egyptian-ai-expert-mustafa-elattar-leverages-tech-to-reduce-medical-errors" target="_blank" rel="noopener"><span class="outlet">We Are Tech Africa</span><span class="hl">Egyptian AI Expert Mustafa Elattar Leverages Tech to Reduce Medical Errors</span><span class="meta tag"><span class="kind">Profile</span>· 15 Dec 2023</span></a>
+      <a class="item" href="https://villgroafrica.org/ai-innovator-spotlight-intixel/" target="_blank" rel="noopener"><span class="outlet">Villgro Africa</span><span class="hl">AI Innovator Spotlight: Intixel</span><span class="meta tag"><span class="kind">Interview</span>· 2023</span></a>
+      <a class="item" href="https://techpoint.africa/feature/deep-tech-startups-north-africa/" target="_blank" rel="noopener"><span class="outlet">Techpoint Africa</span><span class="hl">7 deep-tech startups in North Africa you need to know</span><span class="meta tag"><span class="kind">Feature</span>· 2 Jul 2024</span></a>
+      <a class="item" href="https://au-startups.com/ai-startups-to-watch-in-north-africa/" target="_blank" rel="noopener"><span class="outlet">AU Startups</span><span class="hl">AI Startups to Watch in North Africa</span><span class="meta tag"><span class="kind">Watchlist</span>· 10 May 2023</span></a>
+      <a class="item" href="https://theouut.com/eight-egyptian-startups-secure-funding-from-flat6labs-cairo-seed-program/" target="_blank" rel="noopener"><span class="outlet">The Ouut</span><span class="hl">Eight Egyptian Startups Secure Funding from Flat6Labs Cairo Seed Program</span><span class="meta tag"><span class="kind">News</span>· 2 Aug 2021</span></a>
+      <a class="item" href="https://www.daad-egypt.org/en/about-us/cosimena/our-activities/cosimena-funded-events/cosimena-funded-workshop-bridging-research-to-revenue/" target="_blank" rel="noopener"><span class="outlet">DAAD Egypt</span><span class="hl">COSIMENA-funded workshop: Bridging Research to Revenue</span><span class="meta tag"><span class="kind">Event report</span>· Speaker</span></a>
+    </div>
+    <h3 class="subh">Writing</h3>
+    <ul class="list">
+      <li><p class="t"><a href="https://www.ramyro.com/why-bigger-isnt-always-better-the-hidden-bias-in-radiology-ai/" target="_blank" rel="noopener">Why Bigger Isn't Always Better: The Hidden Bias in Radiology AI</a></p><p class="m">RAMYRO blog · on representative data, bias and the FUTURE-AI guideline</p></li>
+    </ul>
+    <p class="note">Also available in French: <a href="https://www.wearetech.africa/fr/fils/tech-stars/l-egyptien-mustafa-elattar-utilise-l-intelligence-artificielle-pour-ameliorer-les-services-des-radiologues" target="_blank" rel="noopener">We Are Tech Africa profile (FR)</a>.</p>
+  </div>
+</section>
+
+<section class="s" id="contact">
+  <div class="wrap">
+    <div class="contact">
       <div>
-        <a href="experience.html" class="portfolio-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 6h-4V4a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2v2H4c-1.1 0-2 .9-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4zm10 16H4V8h16v12z"/></svg>
-          PORTFOLIO
-        </a>
-        <a href="resume.html" class="portfolio-btn">
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="4" width="48" height="56" rx="4" fill="none" stroke="white" stroke-width="2"/>
-            <circle cx="32" cy="20" r="6" fill="none" stroke="white" stroke-width="2"/>
-            <rect x="20" y="32" width="24" height="4" rx="2" fill="white"/>
-            <rect x="16" y="40" width="32" height="4" rx="2" fill="white"/>
-            <rect x="16" y="48" width="28" height="4" rx="2" fill="white"/>
-          </svg>
-          RESUME
-        </a>
+        <p class="tag">Contact</p>
+        <h2>Let's build AI that works beyond the lab.</h2>
+        <p>Write to me about a talk, a research collaboration or a healthcare-AI partnership. A line on who you are and what you have in mind helps me reply quickly.</p>
+        <div class="contacts">
+          <div class="row"><span class="lbl">General</span><code>mustafa.elattar@gmail.com</code><button class="copy sm" type="button" data-copy="mustafa.elattar@gmail.com">Copy</button></div>
+          <div class="row"><span class="lbl">Academic</span><code>melattar@nu.edu.eg</code><button class="copy sm" type="button" data-copy="melattar@nu.edu.eg">Copy</button></div>
+          <div class="row"><span class="lbl">RAMYRO</span><code>mustafa.elattar@ramyro.com</code><button class="copy sm" type="button" data-copy="mustafa.elattar@ramyro.com">Copy</button></div>
+        </div>
+        <div class="cta"><a class="btn primary" href="https://calendly.com/mustafa-elattar/ramyro-partnership" target="_blank" rel="noopener">Book a partnership call</a></div>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/mustafa-elattar-phd-42289112/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=BJoskL8AAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://www.nu.edu.eg/academic-staff/dr-mustafa-elattar" target="_blank" rel="noopener">Nile University</a>
+          <a href="https://www.ramyro.com" target="_blank" rel="noopener">RAMYRO</a>
+        </div>
+        <p style="font-size:.88rem">Languages: Arabic (native), English (professional), Dutch (elementary)</p>
       </div>
+      <ul class="intents">
+        <li><b>Speaking and media</b><span>Conferences, panels, workshops and interviews on clinical AI and AI education.</span></li>
+        <li><b>Research collaboration</b><span>Joint projects, co-supervision and clinical validation in medical image analysis.</span></li>
+        <li><b>Industry and hospitals</b><span>RAMYRO, ramOS and deploying AI in radiology departments.</span></li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
+</main>
 
-  <script>
-    new Typed('#typed-text', {
-      strings: ['AI RESEARCHER', 'ENTREPRENEUR', 'EDUCATOR'],
-      typeSpeed: 70,
-      backSpeed: 40,
-      backDelay: 2000,
-      loop: true
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Mustafa Elattar, PhD · Cairo, Egypt</span>
+    <span>Intixel artwork: Villgro Africa · Workshop photo: DAAD Egypt · Logos belong to their owners</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();
+  document.querySelectorAll('button[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.getAttribute('data-copy'), code=b.previousElementSibling;
+      var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1800)};
+      var fb=function(){var r=document.createRange();r.selectNodeContents(code);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'};
+      try{navigator.clipboard.writeText(t).then(done,fb)}catch(e){fb()}
     });
+  });
+})();
+</script>
 
-    function toggleMenu(button) {
-      const menu = document.getElementById('navMenu');
-      const isOpen = button.classList.toggle('open');
-      menu.classList.toggle('show', isOpen);
-    }
-  </script>
-
-</body>
-</html>
+</body></html>
